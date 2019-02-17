@@ -4,7 +4,7 @@
 #
 Name     : python-pcre
 Version  : 0.7
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/9d/af/61435bd163f01fe3709fca9b1f79e4978d8089ee671d2e004fc85e10de29/python-pcre-0.7.tar.gz
 Source0  : https://files.pythonhosted.org/packages/9d/af/61435bd163f01fe3709fca9b1f79e4978d8089ee671d2e004fc85e10de29/python-pcre-0.7.tar.gz
 Summary  : Python PCRE bindings
@@ -57,7 +57,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550427623
+export SOURCE_DATE_EPOCH=1550437780
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
