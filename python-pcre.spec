@@ -4,7 +4,7 @@
 #
 Name     : python-pcre
 Version  : 0.7
-Release  : 8
+Release  : 9
 URL      : https://files.pythonhosted.org/packages/9d/af/61435bd163f01fe3709fca9b1f79e4978d8089ee671d2e004fc85e10de29/python-pcre-0.7.tar.gz
 Source0  : https://files.pythonhosted.org/packages/9d/af/61435bd163f01fe3709fca9b1f79e4978d8089ee671d2e004fc85e10de29/python-pcre-0.7.tar.gz
 Summary  : Python PCRE bindings
@@ -15,6 +15,7 @@ Requires: python-pcre-python = %{version}-%{release}
 Requires: python-pcre-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : pcre-dev
+BuildRequires : pytest
 
 %description
 python-pcre
@@ -59,7 +60,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583542064
+export SOURCE_DATE_EPOCH=1585316276
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -71,6 +73,11 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
+%check
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+pytest || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
